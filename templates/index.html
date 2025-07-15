@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Electricity Bill Calculator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+
+  <div class="theme-toggle"> <label class="switch"> <input type="checkbox" id="themeToggle"> <span class="slider"></span> </label> <span id="themeLabel">Dark Mode</span> </div>
+
+  <div class="glass-card">
+    <h1>⚡ WBSEDCL Approxymate⚡ ⚡Electricity Bill Analyzer⚡</h1>
+    <form method="POST">
+      <input type="number" name="units" placeholder="Enter units consumed" required>
+      <button type="submit">Calculate</button>
+    </form>
+    {% if result and not result.error %}
+      <script> Swal.fire({ title: 'Success!', text: 'Bill calculated successfully.', icon: 'success', confirmButtonText: 'OK', timer: 2500, showConfirmButton: false }); </script>
+    {% endif %}
+
+    {% if result %}
+        <div class="result">
+          <h2>🔍 Approx Bill Breakdown</h2>
+          <ul class="breakdown-list">
+            <li><strong>Units Consumed          :</strong> {{ result.units }}</li>
+            <li><strong>Energy Rate         :</strong> ₹{{ result.energy_rate }}/unit</li>
+            <li><strong>Energy Charge         :</strong> ₹{{ result.energy_charge }}</li><br>
+            <li><strong>Fixed Charge          :</strong> ₹{{ result.fixed_charge }}</li>
+            <li><strong>Meter Rent          :</strong> ₹{{ result.meter_rent }}</li>
+            <li><strong>Subsidy         :</strong> ₹{{ result.subsidy }}</li><br>
+            <li><strong>Gross Amount        :</strong> ₹{{ result.gross_amount }}</li><br>
+            <li><strong>Adjustments         :</strong> ₹{{ result.adjustments }}</li>
+            <li><strong>Special Rebate          :</strong> ₹{{ result.special_rebate }}</li>
+          </ul>
+        
+          <div class="highlight">
+            <p class="highlight-yellow">Approxymate Payment Amount</p>
+            <p class="highlight-red">Total (within due date): ₹{{ result.final_amount }}</p>
+            <p class="highlight-red">With Monthly Rebate: ₹{{ result.amount_with_rebate }}</p>
+            <p class="highlight-red">e-Payment Amount: ₹{{ result.epay_amount }}</p>
+          </div>
+        </div>
+
+    {% endif %}
+  </div>
+
+  <script> const toggle = document.getElementById('themeToggle'); const label = document.getElementById('themeLabel'); toggle.addEventListener('change', () => { document.body.classList.toggle('light-mode'); label.textContent = toggle.checked ? "Light Mode" : "Dark Mode"; }); </script>
+</body>
+</html>

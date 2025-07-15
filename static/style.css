@@ -1,0 +1,245 @@
+/* Full page gradient background */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to bottom right, #1e3c72, #2a5298);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Frosted glass card with better visibility */
+.glass-card {
+  background: rgba(255, 255, 255, 0.25); /* more visible */
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  padding: 2rem;
+  border-radius: 15px;
+  width: 400px;
+  color: #fff;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Headline */
+.glass-card h1 {
+  margin-bottom: 1rem;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+/* Input field styling */
+form input {
+  width: 80%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Button styling */
+form button {
+  padding: 0.6rem 1.5rem;
+  background: #00c9ff;
+  background: linear-gradient(to right, #92fe9d, #00c9ff);
+  border: none;
+  border-radius: 5px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  opacity: 0.8;
+}
+
+/* Result section */
+.result {
+  text-align: left;
+  margin-top: 1.5rem;
+  font-size: 14px;
+  color: #f0f0f0;
+}
+
+.result ul {
+  list-style: none;
+  padding: 0;
+}
+
+
+.highlight {
+  margin-top: 20px;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.result {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 14px;
+  color: #f0f0f0;
+}
+
+.breakdown-list {
+  display: inline-block;
+  text-align: left;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+
+.highlight {
+  margin-top: 20px;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.highlight-red {
+  color: #bc0404;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.highlight-yellow {
+  color: #ffda55;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Toggle button styling */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 100;
+  }
+  
+  .switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  }
+  
+  .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  }
+  
+  .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #888;
+  transition: 0.4s;
+  border-radius: 34px;
+  }
+  
+  .slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+  background-color: #4caf50;
+  }
+  
+  input:checked + .slider:before {
+  transform: translateX(20px);
+  }
+  
+  /* Light theme overrides */
+  body.light-mode {
+  background: linear-gradient(to bottom right, #e3f2fd, #fffde7);
+  color: #333;
+  }
+  
+  body.light-mode .glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  color: #111;
+  border: 1px solid #ccc;
+  }
+  
+  body.light-mode .result,
+  body.light-mode .highlight-red {
+  color: #111;
+  }
+  /* Make theme toggle label green in light mode */
+body.light-mode #themeLabel {
+  color: #2e7d32; /* green */
+}
+
+  /* Light mode input field and button style */
+body.light-mode input[type="number"] {
+  background-color: #e0f7fa;
+  color: #004d40;
+  border: 1px solid #26c6da;
+}
+
+body.light-mode input[type="number"]::placeholder {
+  color: #00796b;
+}
+
+body.light-mode button {
+  background: #a5d6a7;
+  color: #1b5e20;
+}
+
+/* Light mode headline */
+body.light-mode .glass-card h1 {
+  color: #2e7d32;
+}
+
+
+  @media screen and (max-width: 480px) {
+.glass-card {
+width: 90%;
+padding: 1.5rem;
+}
+
+.result ul {
+font-size: 13px;
+}
+
+.highlight-red {
+font-size: 16px;
+}
+
+.theme-toggle {
+top: 10px;
+right: 10px;
+}
+}
